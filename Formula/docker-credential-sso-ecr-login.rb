@@ -5,43 +5,23 @@
 class DockerCredentialSsoEcrLogin < Formula
   desc "Automatically gets credentials for Amazon ECR on docker push/docker pull with support for AWS SSO"
   homepage ""
-  version "0.1.0"
+  version "0.1.1"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.0/docker-credential-sso-ecr-login_darwin_amd64.tar.gz"
-      sha256 "2f86aad8ae546bc7bfd5cf9778675c8f9ff14039c5ffbc16acdb3fdfbb39f191"
+      url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.1/docker-credential-sso-ecr-login_darwin_amd64.tar.gz"
+      sha256 "fb5a17c914b29571713dc445161e3dfe021488e255b67d2c2f0dafe9f1868ded"
 
       def install
         bin.install "docker-credential-sso-ecr-login"
-
-        chmod "+x", "#{bin}/docker-credential-sso-ecr-login"
-
-        if OS.mac?
-          ohai "We use `xattr` and `codesign` commands to make the binary executable"
-          ohai "and self-signed, ensuring it runs correctly on macOS."
-
-          system "/usr/bin/xattr", "-cr", "#{bin}/docker-credential-sso-ecr-login"
-          system "/usr/bin/codesign", "--force", "--deep", "--sign", "-", "#{bin}/docker-credential-sso-ecr-login"
-        end
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.0/docker-credential-sso-ecr-login_darwin_arm64.tar.gz"
-      sha256 "652beeeb15bf7966a0b76bce7a1345a3ffa97b636ecf6c7a63395482c0369570"
+      url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.1/docker-credential-sso-ecr-login_darwin_arm64.tar.gz"
+      sha256 "d86c0dbed2d6f5864b5d336449bf7a042e8d006148ff7b5c0b97658bb9d9ae7b"
 
       def install
         bin.install "docker-credential-sso-ecr-login"
-
-        chmod "+x", "#{bin}/docker-credential-sso-ecr-login"
-
-        if OS.mac?
-          ohai "We use `xattr` and `codesign` commands to make the binary executable"
-          ohai "and self-signed, ensuring it runs correctly on macOS."
-
-          system "/usr/bin/xattr", "-cr", "#{bin}/docker-credential-sso-ecr-login"
-          system "/usr/bin/codesign", "--force", "--deep", "--sign", "-", "#{bin}/docker-credential-sso-ecr-login"
-        end
       end
     end
   end
@@ -49,43 +29,33 @@ class DockerCredentialSsoEcrLogin < Formula
   on_linux do
     if Hardware::CPU.intel?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.0/docker-credential-sso-ecr-login_linux_amd64.tar.gz"
-        sha256 "e24a10d310b79a329929de3ee76b869972b1be0bf1721a1f3d6fa7660d14542f"
+        url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.1/docker-credential-sso-ecr-login_linux_amd64.tar.gz"
+        sha256 "1b7492a3be1070bf35d503c371c369d8ead3e4ae4cdb162c1a07020b9dcde793"
 
         def install
           bin.install "docker-credential-sso-ecr-login"
-
-          chmod "+x", "#{bin}/docker-credential-sso-ecr-login"
-
-          if OS.mac?
-            ohai "We use `xattr` and `codesign` commands to make the binary executable"
-            ohai "and self-signed, ensuring it runs correctly on macOS."
-
-            system "/usr/bin/xattr", "-cr", "#{bin}/docker-credential-sso-ecr-login"
-            system "/usr/bin/codesign", "--force", "--deep", "--sign", "-", "#{bin}/docker-credential-sso-ecr-login"
-          end
         end
       end
     end
     if Hardware::CPU.arm?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.0/docker-credential-sso-ecr-login_linux_arm64.tar.gz"
-        sha256 "28428d60b0bf8d77729b54bb6301e01a74c10b829dd876c26fb804aac8936f3a"
+        url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.1/docker-credential-sso-ecr-login_linux_arm64.tar.gz"
+        sha256 "e3f34783586e9ad397eaab103d394bd2d27c05c5023370c890524e4723c06a1b"
 
         def install
           bin.install "docker-credential-sso-ecr-login"
-
-          chmod "+x", "#{bin}/docker-credential-sso-ecr-login"
-
-          if OS.mac?
-            ohai "We use `xattr` and `codesign` commands to make the binary executable"
-            ohai "and self-signed, ensuring it runs correctly on macOS."
-
-            system "/usr/bin/xattr", "-cr", "#{bin}/docker-credential-sso-ecr-login"
-            system "/usr/bin/codesign", "--force", "--deep", "--sign", "-", "#{bin}/docker-credential-sso-ecr-login"
-          end
         end
       end
+    end
+  end
+
+  def post_install
+    if OS.mac?
+      ohai "We use `xattr` and `codesign` commands to make the binary executable"
+      ohai "and self-signed, ensuring it runs correctly on macOS."
+
+      system "/usr/bin/xattr", "-cr", "#{bin}/docker-credential-sso-ecr-login"
+      system "/usr/bin/codesign", "--force", "--deep", "--sign", "-", "#{bin}/docker-credential-sso-ecr-login"
     end
   end
 
