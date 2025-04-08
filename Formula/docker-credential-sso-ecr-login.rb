@@ -5,20 +5,20 @@
 class DockerCredentialSsoEcrLogin < Formula
   desc "Automatically gets credentials for Amazon ECR on docker push/docker pull with support for AWS SSO"
   homepage ""
-  version "0.1.1"
+  version "0.1.2"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.1/docker-credential-sso-ecr-login_darwin_amd64.tar.gz"
-      sha256 "fb5a17c914b29571713dc445161e3dfe021488e255b67d2c2f0dafe9f1868ded"
+      url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.2/docker-credential-sso-ecr-login_darwin_amd64.tar.gz"
+      sha256 "d88fe7f6daaa8f31b1db27e56b2882523279c9e734a9af9995a8ad4a62c0a814"
 
       def install
         bin.install "docker-credential-sso-ecr-login"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.1/docker-credential-sso-ecr-login_darwin_arm64.tar.gz"
-      sha256 "d86c0dbed2d6f5864b5d336449bf7a042e8d006148ff7b5c0b97658bb9d9ae7b"
+      url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.2/docker-credential-sso-ecr-login_darwin_arm64.tar.gz"
+      sha256 "7c3a2c9e268c8a86ac31bdb10a308c000318c9e947589a6df30191d2a9b547c9"
 
       def install
         bin.install "docker-credential-sso-ecr-login"
@@ -29,8 +29,8 @@ class DockerCredentialSsoEcrLogin < Formula
   on_linux do
     if Hardware::CPU.intel?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.1/docker-credential-sso-ecr-login_linux_amd64.tar.gz"
-        sha256 "1b7492a3be1070bf35d503c371c369d8ead3e4ae4cdb162c1a07020b9dcde793"
+        url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.2/docker-credential-sso-ecr-login_linux_amd64.tar.gz"
+        sha256 "d4cc59ec3380b1f728880aac26a933a23a6cd795248cafb4e408deb864da378b"
 
         def install
           bin.install "docker-credential-sso-ecr-login"
@@ -39,8 +39,8 @@ class DockerCredentialSsoEcrLogin < Formula
     end
     if Hardware::CPU.arm?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.1/docker-credential-sso-ecr-login_linux_arm64.tar.gz"
-        sha256 "e3f34783586e9ad397eaab103d394bd2d27c05c5023370c890524e4723c06a1b"
+        url "https://github.com/kyosenergy/docker-credential-sso-ecr-login/releases/download/v0.1.2/docker-credential-sso-ecr-login_linux_arm64.tar.gz"
+        sha256 "16bc5a848746fa51d9713f1fc90eeada7f4ae78c0a8b252276fbb61418303b8f"
 
         def install
           bin.install "docker-credential-sso-ecr-login"
